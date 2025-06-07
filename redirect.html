@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>กำลังพาไปยัง Facebook Messenger</title>
+</head>
+<body>
+  <p>⏳ กำลังโหลดข้อมูล กรุณารอสักครู่</p>
+  <script>
+    const url = new URL(window.location.href);
+    const ref = url.searchParams.get("ref");
+    const chat_id = url.searchParams.get("chat_id");
+
+    // 🔁 เรียก Webhook ของ Make
+    fetch(`https://hook.eu2.make.com/fq807psowwbjb5d393lf2pydtkrndpb1?ref=${ref}&chat_id=${chat_id}`)
+      .then(() => {
+        // ✅ พาไปยังหน้า Facebook Messenger
+        window.location.href = `https://m.me/61576286742136?ref=${ref}`;
+      })
+      .catch(() => {
+        document.body.innerHTML = "<p>❌ เกิดข้อผิดพลาดในการโหลดข้อมูล</p>";
+      });
+  </script>
+</body>
+</html>
